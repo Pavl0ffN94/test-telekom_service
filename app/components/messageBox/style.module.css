@@ -1,0 +1,64 @@
+/* components/ChatMessage.module.css */
+.message {
+  display: flex;
+  align-items: flex-start;
+  margin: 10px 0;
+  max-width: 80%;
+  position: relative;
+}
+
+.mine {
+  justify-content: flex-end;
+}
+
+.their {
+  justify-content: flex-start;
+}
+
+.text {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 15px;
+  position: relative;
+}
+
+.mineText::after, .theirText::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+.mineText::after {
+  border-width: 10px 0 10px 10px;
+  border-color: transparent transparent transparent #007bff;
+  top: 0;
+  right: -10px;
+}
+
+.theirText::after {
+  border-width: 10px 10px 10px 0;
+  border-color: transparent #007bff transparent transparent;
+  top: 0;
+  left: -10px;
+}
+
+.messageContent {
+  margin: 0;
+}
+
+.timestamp {
+  display: block;
+  font-size: 0.8em;
+  color: #d0e0ff;
+  margin-top: 5px;
+  text-align: right;
+}
+
+.icon {
+  font-size: 1em;
+  color: #00ff00;
+  margin-left: 5px;
+}
