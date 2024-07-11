@@ -1,8 +1,8 @@
-/* components/ChatMessage.module.css */
 .message {
   display: flex;
   align-items: flex-start;
-  margin: 10px 0;
+  gap: 1rem;
+  margin: 1rem;
   max-width: 80%;
   position: relative;
 }
@@ -18,9 +18,13 @@
 .text {
   background-color: #007bff;
   color: white;
-  padding: 10px 15px;
+  padding: 0.7rem;
   border-radius: 15px;
   position: relative;
+  display: flex;
+  flex-direction: column; /* Изменение для вертикального расположения */
+  gap: 0.5rem;
+  max-width: 100%; /* Для предотвращения выхода за пределы контейнера */
 }
 
 .mineText::after, .theirText::after {
@@ -32,33 +36,40 @@
 }
 
 .mineText::after {
-  border-width: 10px 0 10px 10px;
+  border-width: 0px 0px 21px 32px;
   border-color: transparent transparent transparent #007bff;
-  top: 0;
-  right: -10px;
+  top: 0px;
+  right: -15px;
 }
 
 .theirText::after {
-  border-width: 10px 10px 10px 0;
+  border-width: 0px 25px 18px 4px;
   border-color: transparent #007bff transparent transparent;
   top: 0;
-  left: -10px;
+  left: -16px;
 }
 
 .messageContent {
   margin: 0;
+  word-break: break-word;
+  white-space: pre-wrap; 
+}
+
+.mesageInfo {
+  display: flex;
+  width: 100%;
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: 0.5rem;
 }
 
 .timestamp {
-  display: block;
   font-size: 0.8em;
   color: #d0e0ff;
-  margin-top: 5px;
-  text-align: right;
+  white-space: nowrap;
 }
 
 .icon {
   font-size: 1em;
   color: #00ff00;
-  margin-left: 5px;
 }
