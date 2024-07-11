@@ -1,5 +1,5 @@
 import styles from './page.module.css';
-import {Header, MessageBox} from './components';
+import {FormMessage, Header, MessageBox} from './components';
 
 const messages = [
   {message: 'I am down for whatever!', timestamp: '2024-07-10T11:36:00', isMine: true},
@@ -20,6 +20,7 @@ export default function Home() {
         {messages.map((msg, index) => (
           <MessageBox key={index} {...msg} />
         ))}
+        <FormMessage />
       </div>
     </main>
   );

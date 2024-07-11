@@ -2,9 +2,9 @@
   display: flex;
   align-items: flex-start;
   gap: 1rem;
-  margin: 1rem;
-  max-width: 80%;
+  max-width: 90%;
   position: relative;
+  flex: 1;
 }
 
 .mine {
@@ -16,15 +16,27 @@
 }
 
 .text {
-  background-color: #007bff;
-  color: white;
   padding: 0.7rem;
   border-radius: 15px;
   position: relative;
   display: flex;
-  flex-direction: column; /* Изменение для вертикального расположения */
+  flex-direction: column; 
   gap: 0.5rem;
-  max-width: 100%; /* Для предотвращения выхода за пределы контейнера */
+  max-width: 100%; 
+}
+
+.mineText {
+  background-color: #007bff;
+  color: white;
+}
+
+.theirText {
+  background-color: #F2F2F7;
+  color: #2C2C2E; 
+}
+
+.theirText .timestamp {
+  color: #666668; 
 }
 
 .mineText::after, .theirText::after {
@@ -44,20 +56,20 @@
 
 .theirText::after {
   border-width: 0px 25px 18px 4px;
-  border-color: transparent #007bff transparent transparent;
+  border-color: transparent #F2F2F7 transparent transparent;
   top: 0;
   left: -16px;
 }
 
 .messageContent {
   margin: 0;
-  word-break: break-word;
+  word-break: break-word; 
   white-space: pre-wrap; 
 }
 
 .mesageInfo {
   display: flex;
-  width: 100%;
+  max-width: 100%;
   align-items: flex-end;
   justify-content: flex-end;
   gap: 0.5rem;
@@ -70,6 +82,7 @@
 }
 
 .icon {
-  font-size: 1em;
+  font-size: 0.8rem;
   color: #00ff00;
+  margin-bottom: 3px;
 }
