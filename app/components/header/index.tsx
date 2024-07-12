@@ -10,12 +10,14 @@ export const Header: FC = () => {
       <div className={styles.icons}>
         <Image src={AvatarGroup} alt='avatar group' />
       </div>
-      <div className={styles.groupName}>
-        <span>🦄 Team Unicorns</span>
-        <span>last seen 45 minutes ago</span>
-      </div>
-      <div className={styles.options}>
-        <Image src={OptionIcon} alt='option' />
+      <div className={styles.grop}>
+        <div className={styles.groupName}>
+          <span className={styles.title}>🦄 Team Unicorns</span>
+          <span className={styles.infoMessage}>last seen 45 minutes ago</span>
+        </div>
+        <div className={styles.options}>
+          <Image src={OptionIcon} alt='option' />
+        </div>
       </div>
     </div>
   );
