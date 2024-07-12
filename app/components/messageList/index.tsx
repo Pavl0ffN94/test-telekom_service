@@ -1,11 +1,10 @@
 'use client';
 
-import React, {useLayoutEffect, useEffect, useRef} from 'react';
+import React, {useLayoutEffect, useRef} from 'react';
 import {motion} from 'framer-motion';
-
+import useMessageStore from '@/store';
 import {MessageBox} from '../messageBox';
 import styles from './style.module.css';
-import useMessageStore from '@/store';
 
 export const MessageList: React.FC = () => {
   const messages = useMessageStore(state => state.messages);

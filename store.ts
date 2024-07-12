@@ -1,4 +1,5 @@
-import create from 'zustand';
+import {create} from 'zustand';
+import {persist} from 'zustand/middleware';
 
 interface Message {
   message: string;
@@ -6,28 +7,33 @@ interface Message {
   isMine: boolean;
 }
 
-interface MessageState {
+interface MessageStore {
   messages: Message[];
   addMessage: (message: Message) => void;
+  editMessage: (timestamp: string, newMessage: string) => void;
+  deleteMessage: (timestamp: string) => void;
 }
 
-const useMessageStore = create<MessageState>(set => ({
-  messages: [],
-  addMessage: message =>
-    set(state => {
-      const newMessages = [...state.messages, message];
-      if (typeof window !== 'undefined') {
-        localStorage.setItem('messages', JSON.stringify(newMessages));
-      }
-      return {messages: newMessages};
+const useMessageStore = create<MessageStore>()(
+  persist(
+    set => ({
+      messages: [],
+      addMessage: message => set(state => ({messages: [...state.messages, message]})),
+      editMessage: (timestamp, newMessage) =>
+        set(state => ({
+          messages: state.messages.map(msg =>
+            msg.timestamp === timestamp ? {...msg, message: newMessage} : msg,
+          ),
+        })),
+      deleteMessage: timestamp =>
+        set(state => ({
+          messages: state.messages.filter(msg => msg.timestamp !== timestamp),
+        })),
     }),
-}));
-
-if (typeof window !== 'undefined') {
-  const savedMessages = localStorage.getItem('messages');
-  if (savedMessages) {
-    useMessageStore.setState({messages: JSON.parse(savedMessages)});
-  }
-}
+    {
+      name: 'message-storage', // имя ключа в localStorage
+    },
+  ),
+);
 
 export default useMessageStore;

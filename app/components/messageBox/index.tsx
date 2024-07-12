@@ -1,9 +1,11 @@
 'use client';
 
-import React, {type FC} from 'react';
+import React, {useState} from 'react';
+import {EditOutlined, DeleteOutlined, CheckOutlined} from '@ant-design/icons';
+
+import useMessageStore from '@/store';
 import styles from './style.module.css';
 import dayjs from 'dayjs';
-import {CheckOutlined} from '@ant-design/icons';
 
 interface IMessageBox {
   message: string;
@@ -11,16 +13,49 @@ interface IMessageBox {
   isMine: boolean;
 }
 
-export const MessageBox: FC<IMessageBox> = ({message, timestamp, isMine}) => {
+export const MessageBox: React.FC<IMessageBox> = ({message, timestamp, isMine}) => {
+  const [isEditing, setIsEditing] = useState(false);
+  const [editedMessage, setEditedMessage] = useState(message);
+  const editMessage = useMessageStore(state => state.editMessage);
+  const deleteMessage = useMessageStore(state => state.deleteMessage);
+
+  const handleEdit = () => {
+    if (isEditing) {
+      editMessage(timestamp, editedMessage);
+    }
+    setIsEditing(!isEditing);
+  };
+
+  const handleDelete = () => {
+    deleteMessage(timestamp);
+  };
+
   const formattedTime = dayjs(timestamp).format('h:mm A');
 
   return (
     <div className={`${styles.message} ${isMine ? styles.mine : styles.their}`}>
       <div className={`${styles.text} ${isMine ? styles.mineText : styles.theirText}`}>
-        <div className={styles.messageContent}>{message}</div>
-        <div className={styles.mesageInfo}>
+        {isEditing ? (
+          <input
+            type='text'
+            value={editedMessage}
+            onChange={e => setEditedMessage(e.target.value)}
+            className={styles.editInput}
+          />
+        ) : (
+          <div className={styles.messageContent}>{message}</div>
+        )}
+        <div className={styles.messageInfo}>
           <div className={styles.timestamp}>{formattedTime}</div>
-          {isMine && <CheckOutlined className={styles.icon} />}
+          {isMine && (
+            <div className={styles.actions}>
+              <EditOutlined className={styles.icon} onClick={handleEdit} />
+              <DeleteOutlined className={styles.icon} onClick={handleDelete} />
+              {isEditing && (
+                <CheckOutlined className={styles.icon} onClick={handleEdit} />
+              )}
+            </div>
+          )}
         </div>
       </div>
     </div>
