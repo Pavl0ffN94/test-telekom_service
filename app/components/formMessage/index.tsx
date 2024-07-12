@@ -1,21 +1,42 @@
 'use client';
 
-import React, {useState} from 'react';
-import {type FC} from 'react';
+import React, {useState, ChangeEvent, FormEvent} from 'react';
+import {FC} from 'react';
 import {SmileOutlined, SendOutlined} from '@ant-design/icons';
 import styles from './style.module.css';
 
+import dayjs from 'dayjs';
+import useMessageStore from '@/store';
+
 export const FormMessage: FC = () => {
   const [message, setMessage] = useState('');
+  const addMessage = useMessageStore(state => state.addMessage);
 
-  const handleChange = event => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setMessage(event.target.value);
   };
 
-  const handleSubmit = event => {
+  const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
-    console.log('Message sent:', message);
-    setMessage('');
+    if (message.trim()) {
+      const userMessage = {
+        message,
+        timestamp: dayjs().format('YYYY-MM-DD HH:mm:ss'),
+        isMine: true,
+      };
+
+      addMessage(userMessage);
+
+      const botMessage = {
+        message: 'Hello world',
+        timestamp: dayjs().format('YYYY-MM-DD HH:mm:ss'),
+        isMine: false,
+      };
+
+      setTimeout(() => addMessage(botMessage), 1000);
+
+      setMessage('');
+    }
   };
 
   return (
@@ -28,7 +49,6 @@ export const FormMessage: FC = () => {
         onChange={handleChange}
         className={styles.input}
       />
-
       <button type='submit' className={styles.sendButton}>
         <SendOutlined />
       </button>
