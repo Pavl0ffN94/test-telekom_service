@@ -1,5 +1,5 @@
-import {create} from 'zustand';
-import {persist} from 'zustand/middleware';
+import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
 
 interface Message {
   message: string;
@@ -16,22 +16,25 @@ interface MessageStore {
 
 const useMessageStore = create<MessageStore>()(
   persist(
-    set => ({
+    (set) => ({
       messages: [],
-      addMessage: message => set(state => ({messages: [...state.messages, message]})),
+      addMessage: (message) =>
+        set((state) => ({ messages: [...state.messages, message] })),
       editMessage: (timestamp, newMessage) =>
-        set(state => ({
-          messages: state.messages.map(msg =>
-            msg.timestamp === timestamp ? {...msg, message: newMessage} : msg,
+        set((state) => ({
+          messages: state.messages.map((msg) =>
+            msg.timestamp === timestamp && msg.isMine
+              ? { ...msg, message: newMessage }
+              : msg,
           ),
         })),
-      deleteMessage: timestamp =>
-        set(state => ({
-          messages: state.messages.filter(msg => msg.timestamp !== timestamp),
+      deleteMessage: (timestamp) =>
+        set((state) => ({
+          messages: state.messages.filter((msg) => msg.timestamp !== timestamp),
         })),
     }),
     {
-      name: 'message-storage', // имя ключа в localStorage
+      name: 'message-storage',
     },
   ),
 );

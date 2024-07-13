@@ -1,10 +1,12 @@
 .message {
   position: relative;
-  margin: 10px 0;
+  display: flex;
+  align-items: flex-start;
 }
 
 .mine {
   text-align: right;
+  justify-content: flex-end;
 }
 
 .their {
@@ -13,38 +15,101 @@
 
 .text {
   display: inline-block;
-  padding: 10px;
+  padding:  0.5rem;
   border-radius: 8px;
+  position: relative;
+  min-width: 20%;
+  max-width: 60%;
 }
 
 .mineText {
-  background-color: #dcf8c6;
+  background-color: #007AFF;
+  color: #f1f1f1;
+
+  .timestamp{
+    color:#FFFFFF ;
+  }
+  .checkMsg{
+    color: #81E299;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+    .icon{
+      font-size: 9px;
+    }
+
+    .botInfo{
+      display: none;
+    }
+
+}
+
+.botInfo{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 7px;
+
+  .botName{
+    font-style: 14px;
+    font-weight: 600;
+    line-height: 18px;
+    color: #2C2C2E;
+  }
+  .botPos{
+    font-style: 12px;
+    font-weight: 400;
+    line-height: 14px;
+    color: #666668;
+  }
 }
 
 .theirText {
-  background-color: #ffffff;
+  background-color: #F2F2F7;
+  color: #2C2C2E;
+
+  .checkMsg{
+    display: none;
+  }
+}
+
+
+.avatar {
+  margin-right: 5px;
 }
 
 .messageContent {
-  margin: 5px 0;
+  text-align: start;
 }
 
 .messageInfo {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
 }
 
 .timestamp {
   font-size: 12px;
-  color: #888;
-}
-
-.actions {
+  color: #666668;
+  font-weight: 400;
+  line-height: 15px;
   display: flex;
   gap: 5px;
 }
 
+.actions {
+  display: none;
+  position: absolute;
+  right: 78%;
+  color: #000;
+  bottom: 5px;
+}
+.actions .icon {
+  font-size: 11px; 
+}
 .icon {
   cursor: pointer;
   font-size: 16px;
@@ -56,4 +121,33 @@
   font-size: 16px;
   border: 1px solid #ddd;
   border-radius: 4px;
+}
+
+.message:hover .actions,
+.message:focus-within .actions {
+  display: flex;
+  gap: 5px;
+}
+
+
+.triangleRight {
+    position: absolute;
+    right: -8px;
+    top: 0px;
+    width: 0;
+    height: 0;
+    border-left: 15px solid #007AFF;
+    border-top: 0px solid transparent;
+    border-bottom: 10px solid transparent;
+  }
+
+.triangleLeft {
+    position: absolute;
+    left: -6px;
+    top: 0px;
+    width: 0;
+    height: 0;
+    border-right: 10px solid #f1f1f1;
+    border-top: 0px solid transparent;
+    border-bottom: 10px solid transparent;
 }
