@@ -174,3 +174,12 @@
     border-top: 0px solid transparent;
     border-bottom: 20px solid transparent;
 }
+
+@media (max-width: 720px) {
+  .actions {
+      right: 70%;
+  }
+  .actions .icon {
+    font-size: 10px;
+  }
+}
