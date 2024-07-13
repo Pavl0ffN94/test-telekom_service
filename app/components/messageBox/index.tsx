@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import { EditOutlined, DeleteOutlined, CheckOutlined } from '@ant-design/icons';
-
 import useMessageStore from '@/store';
 import styles from './style.module.css';
 import dayjs from 'dayjs';
@@ -12,11 +11,12 @@ import dobleCheck from '@/assets/image/dobleCheck.svg';
 
 interface IMessageBox {
   message: string;
+  image?: string;
   timestamp: string;
   isMine: boolean;
 }
 
-export const MessageBox: React.FC<IMessageBox> = ({ message, timestamp, isMine }) => {
+export const MessageBox: React.FC<IMessageBox> = ({ message, image, timestamp, isMine }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editedMessage, setEditedMessage] = useState(message);
   const editMessage = useMessageStore((state) => state.editMessage);
@@ -53,11 +53,14 @@ export const MessageBox: React.FC<IMessageBox> = ({ message, timestamp, isMine }
           />
         ) : (
           <>
-          <div className={styles.botInfo}>
-            <span className={styles.botName}>Jav</span>
-            <span className={styles.botPos}>Engineering</span>
-          </div>
-            <div className={styles.messageContent}>{message}</div>
+            <div className={styles.botInfo}>
+              <span className={styles.botName}>Jav</span>
+              <span className={styles.botPos}>Engineering</span>
+            </div>
+            <div className={styles.messageContent}>
+              {message}
+              {image && <img src={image} alt="uploaded" className={styles.messageImage} />}
+            </div>
           </>
         )}
         <div className={styles.messageInfo}>
@@ -71,9 +74,7 @@ export const MessageBox: React.FC<IMessageBox> = ({ message, timestamp, isMine }
             <div className={styles.actions}>
               <EditOutlined className={styles.icon} onClick={handleEdit} />
               <DeleteOutlined className={styles.icon} onClick={handleDelete} />
-              {isEditing && (
-                <CheckOutlined className={styles.icon} onClick={handleEdit} />
-              )}
+              {isEditing && <CheckOutlined className={styles.icon} onClick={handleEdit} />}
             </div>
           )}
         </div>

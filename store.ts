@@ -3,6 +3,7 @@ import { persist } from 'zustand/middleware';
 
 interface Message {
   message: string;
+  image?: string;
   timestamp: string;
   isMine: boolean;
 }
