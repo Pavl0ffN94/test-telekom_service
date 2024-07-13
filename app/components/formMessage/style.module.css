@@ -113,6 +113,12 @@
 }
 @media (max-width: 426px) {
     .input{
-      max-width: 40%
+      max-width: 70%
+    }
+}
+
+@media (max-width: 372px) {
+  .input{ 
+      max-width: 50%
     }
 }
