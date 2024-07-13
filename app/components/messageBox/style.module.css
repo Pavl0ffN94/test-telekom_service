@@ -177,9 +177,12 @@
 
 @media (max-width: 720px) {
   .actions {
-      right: 70%;
+      right: 5%;
+      top: -1%;
+      margin-bottom: 3px;
+
   }
   .actions .icon {
-    font-size: 10px;
+    font-size: 9px;
   }
 }
