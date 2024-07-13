@@ -1,36 +1,31 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+1. Сверстать окошко чата по макету в Figma.
+2. Учесть все пункты из ТЗ ниже.
+3. Чат должен открываться и выглядеть корректно на всех устройствах (адаптация под все экраны).
+4. Нельзя использовать сторонние библиотеки, кроме указанных в пункте **“Технологии”.**
+5. В данном задании верстка не менее важна, чем логика, поэтому обязательно нужно все сверстать максимально приближено к макету.
 
-## Getting Started
+### Использовать
 
-First, run the development server:
+- **Zustand** - стейт менеджер
+- **React + Next.JS** - фреймворк
+- **Dayjs** - работа с датами
+- **ANTD ICONS** - библиотека иконок
+- **AND DESIGN** - библиотека UI элементов
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Макет
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## **Техническое Задание**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Можно использовать шрифт **Jost** из **Google Fonts**, так как шрифт из макета платный.
+- При перезагрузке страницы сообщения не должны пропадать (исп. localStorage)
+- Header: только верстка
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Окно чата
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Дата в верхней части экрана (текущая дата в формате **8/20/2020**)
+- Сообщения текущего пользователя по правую сторону экрана
+- Сообщения оппонента по левую сторону экрана
+- Новые сообщения появляются внизу списка сообщений (сверху - старые, снизу - новые)
+- На любое сообщение “**бот”** отвечает **Hello World!** (аватарка и имя любое, можно взять из фигмы), время на сообщении должно отображаться корректно, в указанном формате
+- У **“бота”** на аватарке всегда отображается значок “В сети” (зеленый круг)
+- На сообщении пользователя должно быть актуальное время отправки в формате из фигмы
