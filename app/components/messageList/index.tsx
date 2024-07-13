@@ -5,10 +5,15 @@ import {motion} from 'framer-motion';
 import useMessageStore from '@/store';
 import {MessageBox} from '../messageBox';
 import styles from './style.module.css';
+import dayjs from 'dayjs';
 
 export const MessageList: React.FC = () => {
   const messages = useMessageStore(state => state.messages);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  const date = dayjs()
+  const formattedDate = date.format('M/D/YYYY');
+
 
   const scrollToBottom = () => {
     if (messagesEndRef.current) {
@@ -22,6 +27,7 @@ export const MessageList: React.FC = () => {
 
   return (
     <div className={styles.messageList}>
+      <div className={styles.date}>{formattedDate}</div>
       {messages.map((msg, index) => (
         <motion.div
           key={index}

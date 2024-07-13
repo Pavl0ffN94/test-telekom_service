@@ -1,21 +1,21 @@
 .chatForm {
   display: flex;
   align-items: center;
-  padding: 10px;
   background-color: inherit;
   height: 60px;
   transition: background-color 0.3s, box-shadow 0.3s;
 }
 
 .chatForm:hover {
-  background-color: #f0f0f0;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  color: #3D3D3D;
+  .sendButton{
+      color: #007aff;
+  }
+
+
 }
 
-.chatForm:focus-within {
-  background-color: #e0e0e0;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
-}
+
 
 .icon {
   font-size: 24px;
@@ -34,9 +34,7 @@
   transition: background-color 0.3s, box-shadow 0.3s;
 }
 
-.input:focus {
-  background-color: #f0f0f0;
-}
+
 
 .sendButton, .uploadButton {
   background: none;
@@ -56,9 +54,7 @@
   color: #ccc;
 }
 
-.sendButton:hover:not(:disabled), .uploadButton:hover {
-  color: #007aff;
-}
+
 
 .imagePreviewContainer {
   position: relative;
@@ -86,6 +82,7 @@
 @media (max-width: 600px) {
   .chatForm {
     height: 50px;
+    width: 100%;
   }
 
   .icon {
@@ -99,8 +96,7 @@
   }
 
   .sendButton, .uploadButton {
-    font-size: 20px;
-    margin: 0 8px;
+    font-size: 15px;
   }
 
   .imagePreview {
@@ -114,4 +110,9 @@
   max-height: 100px;
   margin-top: 5px;
   border-radius: 5px;
+}
+@media (max-width: 426px) {
+    .input{
+      max-width: 40%
+    }
 }

@@ -8,6 +8,7 @@ import dayjs from 'dayjs';
 import Image from 'next/image';
 import avatarBot from '@/assets/image/avatarBot.png';
 import dobleCheck from '@/assets/image/dobleCheck.svg';
+import indicator from '@/assets/image/indicator.svg'
 
 interface IMessageBox {
   message: string;
@@ -21,7 +22,6 @@ export const MessageBox: React.FC<IMessageBox> = ({ message, image, timestamp, i
   const [editedMessage, setEditedMessage] = useState(message);
   const editMessage = useMessageStore((state) => state.editMessage);
   const deleteMessage = useMessageStore((state) => state.deleteMessage);
-  console.log(image);
 
   const handleEdit = () => {
     if (isEditing && isMine) {
@@ -41,6 +41,7 @@ export const MessageBox: React.FC<IMessageBox> = ({ message, image, timestamp, i
       {!isMine && (
         <div className={styles.avatar}>
           <Image src={avatarBot} alt='avatar bot' width={32} height={32} />
+          <Image src={indicator} alt='indicator' className={styles.indicator} />
         </div>
       )}
       <div className={`${styles.text} ${isMine ? styles.mineText : styles.theirText}`}>

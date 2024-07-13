@@ -79,20 +79,31 @@
 
 .avatar {
   margin-right: 5px;
+  position: relative;
 }
+
+.indicator{
+  position: absolute;
+  left: 22px;
+  bottom: 5px;
+}
+
 
 .messageContent {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-    position: relative;
   gap: 0.5rem;
 }
 
 .messageImage{
   max-height: 300px;
   border-radius: 1rem;
+  position: relative;
 }
+
+
+
 .msgText{
   text-align: left;
 }
@@ -150,7 +161,7 @@
     height: 0;
     border-left: 15px solid #007AFF;
     border-top: 0px solid transparent;
-    border-bottom: 10px solid transparent;
+    border-bottom: 20px solid transparent;
   }
 
 .triangleLeft {
@@ -161,5 +172,5 @@
     height: 0;
     border-right: 10px solid #f1f1f1;
     border-top: 0px solid transparent;
-    border-bottom: 10px solid transparent;
+    border-bottom: 20px solid transparent;
 }
