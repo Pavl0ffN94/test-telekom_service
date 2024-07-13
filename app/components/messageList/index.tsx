@@ -32,6 +32,7 @@ export const MessageList: React.FC = () => {
             message={msg.message}
             timestamp={msg.timestamp}
             isMine={msg.isMine}
+            image={msg.image}
           />
         </motion.div>
       ))}

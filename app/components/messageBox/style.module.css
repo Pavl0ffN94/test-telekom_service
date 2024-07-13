@@ -82,8 +82,21 @@
 }
 
 .messageContent {
-  text-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+    position: relative;
+  gap: 0.5rem;
 }
+
+.messageImage{
+  max-height: 300px;
+  border-radius: 1rem;
+}
+.msgText{
+  text-align: left;
+}
+
 
 .messageInfo {
   display: flex;
@@ -128,7 +141,6 @@
   display: flex;
   gap: 5px;
 }
-
 
 .triangleRight {
     position: absolute;

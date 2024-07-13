@@ -5,6 +5,8 @@ import { SmileOutlined, SendOutlined, UploadOutlined, CloseOutlined } from '@ant
 import styles from './style.module.css';
 import dayjs from 'dayjs';
 import useMessageStore from '@/store';
+import uploadFile from '@/assets/image/uploadFile.svg';
+import Image from 'next/image';
 
 export const FormMessage: React.FC = () => {
   const [message, setMessage] = useState('');
@@ -33,13 +35,17 @@ export const FormMessage: React.FC = () => {
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
     if (message.trim() || image) {
-      const userMessage = {
+      const userMessage: {
+        message: string;
+        image?: string;
+        timestamp: string;
+        isMine: boolean;
+      } = {
         message,
-        image: preview,
+        image: preview || '',
         timestamp: dayjs().format('YYYY-MM-DD HH:mm:ss'),
         isMine: true,
       };
-
       addMessage(userMessage);
 
       const botMessage = {
@@ -72,7 +78,7 @@ export const FormMessage: React.FC = () => {
         className={styles.input}
       />
       <label className={styles.uploadButton}>
-        <UploadOutlined />
+        <Image src={uploadFile} alt="upload file" />
         <input
           type="file"
           accept="image/webp, image/png, image/jpeg"

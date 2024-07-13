@@ -21,6 +21,7 @@ export const MessageBox: React.FC<IMessageBox> = ({ message, image, timestamp, i
   const [editedMessage, setEditedMessage] = useState(message);
   const editMessage = useMessageStore((state) => state.editMessage);
   const deleteMessage = useMessageStore((state) => state.deleteMessage);
+  console.log(image);
 
   const handleEdit = () => {
     if (isEditing && isMine) {
@@ -58,8 +59,8 @@ export const MessageBox: React.FC<IMessageBox> = ({ message, image, timestamp, i
               <span className={styles.botPos}>Engineering</span>
             </div>
             <div className={styles.messageContent}>
-              {message}
               {image && <img src={image} alt="uploaded" className={styles.messageImage} />}
+              <p className={styles.msgText}> {message}</p>
             </div>
           </>
         )}
