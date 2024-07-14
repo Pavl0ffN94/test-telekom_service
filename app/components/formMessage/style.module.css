@@ -9,11 +9,13 @@
   padding-bottom: 1rem;
 }
 
-.chatForm:hover {
+.chatForm:hover .chatForm:focus-within {
   color: #3D3D3D;
+  max-width: 90vw;
   .sendButton{
       color: #007aff;
   }
+
 }
 
 
