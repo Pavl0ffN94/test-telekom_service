@@ -5,6 +5,8 @@
   background-color: inherit;
   height: 60px;
   transition: background-color 0.3s, box-shadow 0.3s;
+  width: 90vw;
+  padding-bottom: 1rem;
 }
 
 .chatForm:hover {
@@ -119,6 +121,6 @@
 @media (max-width: 372px) {
   
   .input{ 
-      max-width: 50%
+      max-width: 40%
     }
 }
